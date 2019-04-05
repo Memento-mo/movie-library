@@ -15,6 +15,7 @@ import Loader from '../components/Loader';
 
 import Discover from './Discover';
 import Genre from './Genre';
+import MovieDetails from './Movie-details';
 
 const Wrapped = styled.div``;
 
@@ -40,18 +41,16 @@ const App = ({ init, isLoading }) => {
 
           <Switch>
             <Route path="/" render={() => (
-              <Redirect to="/discover/Popular"/>
+              <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`}/>
             )} exact/>
 
-            
+            <Route path={`${process.env.PUBLIC_URL}/discover/:name`} component={Discover}/>
 
-            <Route path="/discover/:name" component={Discover}/>
+            <Route path={`${process.env.PUBLIC_URL}/genre/:name`} component={Genre}/>
 
-            <Route path="/genre/:name" component={Genre}/>
+            <Route path={`${process.env.PUBLIC_URL}/movie/:id`} component={MovieDetails}/>
 
-
-
-            <Redirect to="/discover/Popular"/>
+            <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`} />
           </Switch>
 
         </Wrapped>

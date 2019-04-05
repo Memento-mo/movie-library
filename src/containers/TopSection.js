@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 
 const WrappedSection = styled.div`
-  height: 90px;
+  height: 70px;
   background: ${props => props.theme.colors.blue};
   color: ${props => props.theme.colors.text};
   display: flex;

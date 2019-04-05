@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
 import RenderPropsMenu from './Menu';
+// import StickyBox from 'react-sticky-box';
 
 const Wrapped = styled.div`
   display: flex;

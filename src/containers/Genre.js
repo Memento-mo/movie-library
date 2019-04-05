@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { getMovies } from '../actions/index';
+import { getMovies, clearMovies } from '../actions/index';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 
@@ -19,13 +19,15 @@ const LoaderWrapper = styled.div`
   left: 47.5%;
 `;
 
-const Genre = ({ match, getMovies, movies, loading, location }) => {
+const Genre = ({ match, getMovies, movies, loading, location, clearMovies }) => {
 
   const params = queryString.parse(location.search)
   
   useEffect(() => {
     console.log('update Genre')
-    getMovies(match.params.name, params.page)
+
+    updateMovies(match.params.name, params.page, clearMovies, getMovies)
+    
   }, [match.params.name, params.page])
 
   if(loading) {
@@ -41,6 +43,11 @@ const Genre = ({ match, getMovies, movies, loading, location }) => {
   )
 }
 
+const updateMovies = (name, page, clearMovies, getMovies) => {
+  getMovies(name, page)
+  return () => clearMovies()
+}
+
 const mapStateToProps = ({geral, movies}) => {
   return { 
     geral, 
@@ -51,5 +58,5 @@ const mapStateToProps = ({geral, movies}) => {
 
 export default connect(
   mapStateToProps,
-  { getMovies }
+  { getMovies, clearMovies }
 )(Genre);

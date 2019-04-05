@@ -15,6 +15,7 @@ const Color = styled.div`
   color: #fff;
   text-transform: capitalize;
   font-size: 16px;
+  font-family: 'Comfortaa', cursive;
 `;
 
 function RenderPropsMenu({ genres = []}) {

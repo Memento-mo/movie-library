@@ -26,7 +26,7 @@ const Discover = ({ match, getMovies, movies, loading, location }) => {
   useEffect(() => {
     console.log('update Discover')
     getMovies(match.params.name, params.page)
-  }, [params.page])
+  }, [params.page, match.params.name])
 
   if(loading) {
     return <LoaderWrapper><Loader /></LoaderWrapper>

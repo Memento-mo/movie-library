@@ -7,15 +7,10 @@ import Button from './Button';
 const ButtonsWrapped = styled.div`
   margin-top: 40px;
   display: flex;
-`;
-
-const ButtonNext = styled.div`
-  position: relative;
-  left: 85%;
-`;
-
-const ButtonPrev = styled.div`
-  position: relative;
+  justify-content: ${props => 
+      props.type === 'both' ? 'space-between' 
+    : props.type === 'last' ? 'flex-start' 
+    : 'flex-end'}
 `;
 
 const Pagination = ({ movies }) => {
@@ -26,37 +21,29 @@ const Pagination = ({ movies }) => {
   if(page < total_pages && page === 1) {
     return(
       <ButtonsWrapped>
-        <ButtonNext>
           <NavLink to={`${process.env.PUBLIC_URL}?page=${page + 1}`}>
             <Button title={`Страница ${page + 1}`} />
           </NavLink>
-        </ButtonNext> 
       </ButtonsWrapped>
     )
   } else if (page < total_pages) {
     return (
-      <ButtonsWrapped>
-        <ButtonPrev>
+      <ButtonsWrapped type="both">
           <NavLink to={`${process.env.PUBLIC_URL}?page=${page - 1}`}>
             <Button title={`Страница ${page - 1}`}/>
           </NavLink>
-        </ButtonPrev> 
 
-        <ButtonNext>
           <NavLink to={`${process.env.PUBLIC_URL}?page=${page + 1}`}>
             <Button title={`Страница ${page + 1}`}/>
           </NavLink>
-        </ButtonNext>
       </ButtonsWrapped>
     )
   } else {
     return (
-      <ButtonsWrapped>
-        <ButtonPrev>
+      <ButtonsWrapped type="last">
           <NavLink to={`${process.env.PUBLIC_URL}?page=${page - 1}`}>
             <Button title={`Страница ${page - 1}`} />
           </NavLink>
-        </ButtonPrev>
       </ButtonsWrapped>
     )
   }

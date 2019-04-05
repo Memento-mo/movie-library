@@ -32,9 +32,10 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Comfortaa', cursive;
     font-weight: 400;
     line-height: 1.6;
+    user-select: none;
   }
 
   form,

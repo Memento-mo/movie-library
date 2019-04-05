@@ -44,3 +44,24 @@ export const getMovies = (genre, page) => async (dispatch, getState) => {
   })
   dispatch({ type: TYPES.FETCH_MOVIE_FINISHED });
 }
+
+export const getMovie = (id) => async dispatch => {
+
+  dispatch({ type: TYPES.FETCH_GET_MOVIE_LOADING });
+
+  const res = await moviedb.get(`/movie/${id}`);
+
+  await dispatch({
+    type: TYPES.FETCH_GET_MOVIE,
+    payload: res.data
+  })
+
+  dispatch({ type: TYPES.FETCH_GET_MOVIE_FINISHED })
+} 
+
+
+export const clearMovies = () => {
+  return {
+    type: TYPES.FETCH_MOVIE_LOADING
+  }
+}
