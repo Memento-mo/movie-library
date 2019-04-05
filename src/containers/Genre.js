@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getMovies } from '../actions/index';
 import { connect } from 'react-redux';
-import Loader from '../components/Loader';
+import queryString from 'query-string';
 
+import Loader from '../components/Loader';
 import Title from '../components/Title';
 import Movies from '../components/Movies';
 
@@ -18,21 +19,24 @@ const LoaderWrapper = styled.div`
   left: 47.5%;
 `;
 
-const Genre = ({ match, getMovies, movies, loading }) => {
+const Genre = ({ match, getMovies, movies, loading, location }) => {
+
+  const params = queryString.parse(location.search)
+  
   useEffect(() => {
     console.log('update Genre')
-    getMovies(match.params.name, 1)
-  }, [match.params.name])
+    getMovies(match.params.name, params.page)
+  }, [match.params.name, params.page])
 
   if(loading) {
-    return <LoaderWrapper><Loader /></LoaderWrapper>
+    return <LoaderWrapper><Loader/></LoaderWrapper>
   }
 
   return (
     <Wrapped>
       <Title title={match.params.name} subtitle={'Фильмы'}/>
 
-      <Movies movies={movies}/>
+      <Movies movies={movies} />
     </Wrapped>
   )
 }
@@ -40,7 +44,7 @@ const Genre = ({ match, getMovies, movies, loading }) => {
 const mapStateToProps = ({geral, movies}) => {
   return { 
     geral, 
-    movies: movies.movies,
+    movies,
     loading: movies.loading
   };
 };

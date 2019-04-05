@@ -43,9 +43,13 @@ const App = ({ init, isLoading }) => {
               <Redirect to="/discover/Popular"/>
             )} exact/>
 
+            
+
             <Route path="/discover/:name" component={Discover}/>
 
             <Route path="/genre/:name" component={Genre}/>
+
+
 
             <Redirect to="/discover/Popular"/>
           </Switch>

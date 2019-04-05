@@ -48,9 +48,7 @@ function RenderPropsMenu({ genres = []}) {
                       to={`/genre/${item.name}`}
                     >
                     <MenuItem 
-                      onClick={() => {
-                        handleClose() 
-                        console.log(item.id)}}>{item.name}</MenuItem>
+                      onClick={handleClose}>{item.name}</MenuItem>
                   </NavLink>
                 
                 })

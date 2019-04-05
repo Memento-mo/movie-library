@@ -1,10 +1,6 @@
 .movies {
   width: 100%;
 }
-.movies-container {
-  width: 84%;
-  margin: 0 auto;
-}
 
 :root {
   --font: "Roboto", sans-serif;

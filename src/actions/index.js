@@ -34,13 +34,13 @@ export const getMovies = (genre, page) => async (dispatch, getState) => {
   const res = await moviedb.get('/discover/movie', {
     params: {
       sort_by: 'popularity.desc',
-      page: 1,
+      page,
       with_genres: genreId
     }
   })
   await dispatch({
     type: TYPES.FETCH_LOAD_MOVIES,
-    payload: res.data.results
+    payload: res.data
   })
   dispatch({ type: TYPES.FETCH_MOVIE_FINISHED });
 }
