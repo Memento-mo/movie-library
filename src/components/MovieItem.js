@@ -94,7 +94,15 @@ const InfoMovie = styled.div`
   margin-top: 10px;
 `;
 
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  display: flex;
+  margin-top: 5px;
+`;
+
+const WrappedLink = styled.a`
+  display: block;
+  margin-left: 10px;
+`;
 
 const MovieItem = ({ baseUrl, movie }) => {
 
@@ -102,7 +110,7 @@ const MovieItem = ({ baseUrl, movie }) => {
 
   const genres = getGenres(movie.genres);
 
-
+console.log(movie)
   return (
     <Wrapped>
       <Title>{movie.title} ({movie.original_title})</Title>
@@ -148,6 +156,9 @@ const MovieItem = ({ baseUrl, movie }) => {
 
           <Buttons>
             { renderVideo(movie.videos.results, isOpen, setOpen) }
+            <WrappedLink target="_blank" rel="noopener noreferrer" href={movie.homepage} >
+              <Button title="Сайт фильма" />
+            </WrappedLink>
           </Buttons>
         </Description>
       </Content>

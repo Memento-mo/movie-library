@@ -26,7 +26,7 @@ const SliderSlick = ({ cast, baseUrl }) => {
   const settings = {
     infinite: true,
     speed: 300,
-    slidesToShow: cast.length < 10 ? 1 : 10,
+    slidesToShow: cast.length < 8 ? 1 : 8,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1500
