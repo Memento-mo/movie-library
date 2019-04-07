@@ -45,7 +45,7 @@ export const getMovies = (genre, page) => async (dispatch, getState) => {
   dispatch({ type: TYPES.FETCH_MOVIE_FINISHED });
 }
 
-export const getMovie = (id) => async dispatch => {
+export const getMovie = (id, page) => async dispatch => {
 
   dispatch({ type: TYPES.FETCH_GET_MOVIE_LOADING });
 
@@ -54,6 +54,7 @@ export const getMovie = (id) => async dispatch => {
       append_to_response: 'videos',
     }
   });
+  await dispatch(getMoviesRecommendations(id, page))
 
   await dispatch({
     type: TYPES.FETCH_GET_MOVIE,
@@ -95,7 +96,7 @@ export const clearMovies = () => {
   }
 }
 
-export const getMoviesWithPerson = (id, page) => async (dispatch) =>{
+export const getMoviesWithPerson = (id, page) => async (dispatch) => {
   const res = await moviedb.get(`/discover/movie`, {
     params: {
       with_cast: id,
@@ -105,6 +106,18 @@ export const getMoviesWithPerson = (id, page) => async (dispatch) =>{
   })
   dispatch({
     type: TYPES.FETCH_MOVIES_WITH_PERSON,
+    payload: res.data
+  })
+}
+
+export const getMoviesRecommendations = (id, page) => async (dispatch) => {
+  const res = await moviedb.get(`/movie/${id}/recommendations`, {
+    params: {
+      page
+    }
+  })
+  dispatch({
+    type: TYPES.FETCH_MOVIE_RECOMMENDATIONS,
     payload: res.data
   })
 }

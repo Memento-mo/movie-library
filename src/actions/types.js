@@ -28,3 +28,6 @@ export const FETCH_GET_PERSON_FINISHED = 'FETCH_GET_PERSON_FINISHED';
 
 // Получение фильмов с данным персонажем
 export const FETCH_MOVIES_WITH_PERSON = 'FETCH_MOVIES_WITH_PERSON';
+
+// Рекомендации фильмов для фильма 
+export const FETCH_MOVIE_RECOMMENDATIONS = 'FETCH_MOVIE_RECOMMENDATIONS';

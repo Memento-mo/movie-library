@@ -34,7 +34,7 @@ const Title = styled.div`
   font-size: 40px;
 `;
 
-const Info = styled.div`
+const InfoHeader = styled.div`
   font-size: 12px;
   display: flex;
   justify-content: space-between;
@@ -45,18 +45,10 @@ const Year = styled.div`
   margin-right: 4px;
 `;
 const Countries = styled.div``;
-const Genres = styled.div`
-  font-size: 14px;
-  margin-bottom: 10px;
-`;
 
 const SubTitle = styled.div`
   font-size: 22px;
   color: black;
-`;
-
-const Overview = styled.div`
-  margin-bottom: 10px;
 `;
 
 const RatingsWrapper = styled.div`
@@ -68,9 +60,7 @@ const RatingInfo = styled.div`
   margin-bottom: 8px;
 `;
 
-const Budget = styled.div`
-  margin-bottom: 10px;
-`;
+
 const Subdescr = styled.div`
   margin-left: 10px;
 `;
@@ -96,7 +86,15 @@ const SliderWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
+const InfoMovie = styled.div`
+  margin-top: 10px;
+`;
+
+
 const MovieItem = ({ baseUrl, movie }) => {
+
+  const genres = getGenres(movie.genres);
+
   return (
     <Wrapped>
       <Title>{movie.title} ({movie.original_title})</Title>
@@ -106,7 +104,7 @@ const MovieItem = ({ baseUrl, movie }) => {
         </Img>
 
         <Description>
-          <Info>
+          <InfoHeader>
               <Countries>
                 { countries(movie.production_countries) } 
               </Countries>
@@ -114,7 +112,7 @@ const MovieItem = ({ baseUrl, movie }) => {
               <Year>
                 { countries(movie.spoken_languages) } / {movie.runtime} мин / {years(movie.release_date)} 
               </Year>
-          </Info>
+          </InfoHeader>
 
           <RatingInfo>
             <SubTitle>Рейтинг:</SubTitle>
@@ -129,36 +127,38 @@ const MovieItem = ({ baseUrl, movie }) => {
             </Subdescr>
           </RatingInfo>
 
-          <Budget>
-            <SubTitle>Бюджет:</SubTitle>
-            <Subdescr>{movie.budget}$</Subdescr>
-          </Budget>
+          <Info subTitle={"Бюджет:"} subDescr={`${movie.budget}$`}/>
 
-          <Genres>
-            <SubTitle>Жанры:</SubTitle>
-            <Subdescr>{ getGenres(movie.genres) }</Subdescr>
-          </Genres>
-
-          <Overview>
-            <SubTitle>Описание:</SubTitle>
-            <Subdescr>{movie.overview}</Subdescr>
-          </Overview>
+          <Info subTitle={"Жанры:"} subDescr={genres}/>
+          
+          <Info subTitle={"Описание:"} subDescr={`${movie.overview}`}/>
 
           <SliderWrapper>
-            <SubTitle>Актеры:</SubTitle>
+            <Info subTitle={"Актеры:"}/>
             <SliderSlick cast={movie.cast} baseUrl={baseUrl}/>
           </SliderWrapper>
 
-          {/* <SliderWrapper>
-            <SubTitle>Съемочная команда:</SubTitle>
-            <SliderSlick cast={crew} baseUrl={baseUrl}/>
-          </SliderWrapper> */}
         </Description>
       </Content>
     
     </Wrapped>
   )
 }
+
+const Info = ({ subTitle, subDescr }) => {
+  
+  return !subDescr ? 
+        <InfoMovie>
+          <SubTitle>{subTitle}</SubTitle>
+        </InfoMovie> 
+      :
+        <InfoMovie>
+          <SubTitle>{subTitle}</SubTitle>
+          <Subdescr>{subDescr}</Subdescr>
+        </InfoMovie>
+    
+}
+
 
 const countries = items => {
   return items.map(item => item.name + ' ')
