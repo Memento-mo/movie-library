@@ -15,7 +15,7 @@ const LoaderWrapper = styled.div`
 const MovieDetails = ({ match, getMovie, movie, loading, geral }) => {
   useEffect(() => {
     getMovie(match.params.id)
-  }, [])
+  }, [match.params.id])
 
   const { secure_base_url } = geral.base.images;
 

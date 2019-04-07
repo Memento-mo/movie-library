@@ -110,7 +110,7 @@
   align-self: center;
   justify-self: center;
   margin-bottom: 2px;
-  color: var(--main-color);
+  color: rgba(55,71,79,1);
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.1rem;
