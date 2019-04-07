@@ -156,9 +156,14 @@ console.log(movie)
 
           <Buttons>
             { renderVideo(movie.videos.results, isOpen, setOpen) }
-            <WrappedLink target="_blank" rel="noopener noreferrer" href={movie.homepage} >
-              <Button title="Сайт фильма" />
-            </WrappedLink>
+
+            { movie.homepage === '' ? 
+                null 
+              : <WrappedLink target="_blank" rel="noopener noreferrer" href={movie.homepage} >
+                  <Button title="Сайт фильма" />
+                </WrappedLink>
+            }
+            
           </Buttons>
         </Description>
       </Content>
