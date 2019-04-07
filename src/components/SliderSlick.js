@@ -26,7 +26,7 @@ const SliderSlick = ({ cast, baseUrl }) => {
   const settings = {
     infinite: true,
     speed: 300,
-    slidesToShow: cast.length > 5 ? 10 : 2,
+    slidesToShow: cast.length < 10 ? 1 : 10,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1500
@@ -40,7 +40,7 @@ const SliderSlick = ({ cast, baseUrl }) => {
           return (
             <NavLink to={`${process.env.PUBLIC_URL}/person/${item.id}`} key={item.id}>
               <ImgWrapper >
-                <Img src={`${baseUrl}original${item.profile_path}`} alt={item.character}/>
+                <Img slidesToShow={settings.slidesToShow} src={`${baseUrl}original${item.profile_path}`} alt={item.character}/>
               </ImgWrapper>
             </NavLink>
           )

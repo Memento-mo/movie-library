@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import Rating from './Rating';
 import SliderSlick from './SliderSlick';
+import ModalVideo from 'react-modal-video';
+import Button from './Button';
+
+import '../../node_modules/react-modal-video/scss/modal-video.scss';
 
 const Wrapped = styled.div`
   width: 1100px;
@@ -90,10 +94,14 @@ const InfoMovie = styled.div`
   margin-top: 10px;
 `;
 
+const Buttons = styled.div``;
 
 const MovieItem = ({ baseUrl, movie }) => {
 
+  const [isOpen, setOpen] = useState(false)
+
   const genres = getGenres(movie.genres);
+
 
   return (
     <Wrapped>
@@ -138,10 +146,34 @@ const MovieItem = ({ baseUrl, movie }) => {
             <SliderSlick cast={movie.cast} baseUrl={baseUrl}/>
           </SliderWrapper>
 
+          <Buttons>
+            { renderVideo(movie.videos.results, isOpen, setOpen) }
+          </Buttons>
         </Description>
       </Content>
     
     </Wrapped>
+  )
+}
+
+const renderVideo = (videos, isOpen, setOpen) => {
+  if(videos.length === 0) {
+    return;
+  }
+  const { key } = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube')
+
+  return (
+    <React.Fragment>
+      <div onClick={() => setOpen(true)}>
+        <Button title="Трейлер" icon="play" />
+      </div>
+      <ModalVideo
+        channel="youtube"
+        isOpen={isOpen}
+        videoId={key}
+        onClose={() => setOpen(false)}
+      />
+  </React.Fragment>
   )
 }
 
@@ -177,5 +209,7 @@ const getGenres = items => {
 const years = year => {
   return year.split('-')[0]
 }
+
+
 
 export default MovieItem

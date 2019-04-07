@@ -17,6 +17,7 @@ import Discover from './Discover';
 import Genre from './Genre';
 import MovieDetails from './MovieDetails';
 import Person from './Person';
+import Search from './Search';
 
 const Wrapped = styled.div``;
 
@@ -45,13 +46,15 @@ const App = ({ init, isLoading }) => {
               <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`}/>
             )} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/discover/:name`} component={Discover}/>
+            <Route path={`${process.env.PUBLIC_URL}/discover/:name`} component={Discover} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/genre/:name`} component={Genre}/>
+            <Route path={`${process.env.PUBLIC_URL}/genre/:name`} component={Genre} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/movie/:id`} component={MovieDetails}/>
+            <Route path={`${process.env.PUBLIC_URL}/movie/:id`} component={MovieDetails} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/person/:id`} component={Person} />
+            <Route path={`${process.env.PUBLIC_URL}/person/:id`} component={Person}  exact/>
+
+            <Route path={`${process.env.PUBLIC_URL}/search/:query`} component={Search}  exact/>
 
             <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`} />
           </Switch>

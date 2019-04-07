@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom'
 
-import './movie.css';
+import '../css/movie.css';
 
 const Img = styled.img``;
 const CardBody = styled.div``;

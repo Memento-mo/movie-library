@@ -31,3 +31,8 @@ export const FETCH_MOVIES_WITH_PERSON = 'FETCH_MOVIES_WITH_PERSON';
 
 // Рекомендации фильмов для фильма 
 export const FETCH_MOVIE_RECOMMENDATIONS = 'FETCH_MOVIE_RECOMMENDATIONS';
+
+// Получение фильмов с помощью поиска
+export const FETCH_SEARCH_MOVIE = 'FETCH_MOVIE_SEARCH';
+export const FETCH_SEARCH_LOADING = 'FETCH_SEARCH_LOADING';
+export const FETCH_SEARCH_FINISHED = 'FETCH_SEARCH_FINISHED';

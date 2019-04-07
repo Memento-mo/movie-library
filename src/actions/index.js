@@ -121,3 +121,20 @@ export const getMoviesRecommendations = (id, page) => async (dispatch) => {
     payload: res.data
   })
 }
+
+export const getMoviesSearch = (page, query) => async dispatch => {
+  dispatch({ type: TYPES.FETCH_SEARCH_LOADING })
+  const res = await moviedb.get('/search/movie', {
+    params: {
+      page,
+      query
+    }
+  })
+
+  await dispatch({
+    type: TYPES.FETCH_SEARCH_MOVIE,
+    payload: res.data
+  })
+
+  dispatch({ type: TYPES.FETCH_SEARCH_FINISHED })
+}

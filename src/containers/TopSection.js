@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
+import SearchBar from '../components/SearchBar';
 
 const WrappedSection = styled.div`
   height: 70px;
@@ -15,6 +16,9 @@ const Container = styled.div`
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const TopSection = () => {
@@ -23,7 +27,8 @@ const TopSection = () => {
       <Container>
 
         <Header />
-
+        
+        <SearchBar />
       </Container>
     </WrappedSection>
   )
