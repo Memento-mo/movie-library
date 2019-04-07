@@ -9,17 +9,22 @@ export const FINISH_LOADER = 'FINISH_LOADER';
 export const FETCH_MOVIE_LOADING = 'FETCH_MOVIE_LOADING';
 export const FETCH_MOVIE_FINISHED = 'FETCH_MOVIE_FINISHED';
 
-// export const SELECTED_MENU = 'SELECTED_MENU'; 
-// export const REMOVE_SELECTED_MENU = 'REMOVE_SELECTED_MENU'; ???
-
 // Получение фильмов
 export const FETCH_LOAD_MOVIES = 'FETCH_LOAD_MOVIES';
 export const FETCH_MOVIES_GENRE = 'FETCH_MOVIES_GENRE';
-
 
 // Получение фильма
 export const FETCH_GET_MOVIE = 'FETCH_GET_MOVIE';
 export const FETCH_GET_MOVIE_LOADING = 'FETCH_GET_MOVIE_LOADING';
 export const FETCH_GET_MOVIE_FINISHED = 'FETCH_GET_MOVIE_FINISHED';
 
+// Получение актеров
+export const FETCH_GET_CAST = 'FETCH_GET_CAST';
 
+// Получение персонажа
+export const FETCH_GET_PERSON = 'FETCH_GET_PERSON';
+export const FETCH_GET_PERSON_LOADING = 'FETCH_GET_PERSON_LOADING';
+export const FETCH_GET_PERSON_FINISHED = 'FETCH_GET_PERSON_FINISHED';
+
+// Получение фильмов с данным персонажем
+export const FETCH_MOVIES_WITH_PERSON = 'FETCH_MOVIES_WITH_PERSON';

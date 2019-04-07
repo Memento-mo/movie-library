@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import MovieItem from './Movie-item';
+import MovieCart from './MovieCart';
 import Pagination from './Pagination';
 
 const Section = styled.section`
@@ -32,7 +32,7 @@ const Movies = ({ movies }) => {
 
         <Wrapped> 
           { 
-            result.map(movie => <MovieItem movies={movie} key={movie.id}/>) 
+            result.map(movie => <MovieCart movies={movie} key={movie.id}/>) 
           } 
         </Wrapped>
 

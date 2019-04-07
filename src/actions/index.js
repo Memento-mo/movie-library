@@ -49,19 +49,62 @@ export const getMovie = (id) => async dispatch => {
 
   dispatch({ type: TYPES.FETCH_GET_MOVIE_LOADING });
 
-  const res = await moviedb.get(`/movie/${id}`);
+  const res = await moviedb.get(`/movie/${id}`, {
+    params: {
+      append_to_response: 'videos',
+    }
+  });
 
   await dispatch({
     type: TYPES.FETCH_GET_MOVIE,
     payload: res.data
   })
 
+  await dispatch(getCredits())
+
   dispatch({ type: TYPES.FETCH_GET_MOVIE_FINISHED })
-} 
+}
+
+export const getCredits = () => async (dispatch, getState) => {
+  const { movie } = getState();
+  const res = await moviedb.get(`/movie/${movie.id}/credits`);
+  dispatch({
+    type: TYPES.FETCH_GET_CAST,
+    payload: res.data
+  })
+}
+
+export const getPerson = (id, page) => async (dispatch) => {
+  dispatch({ type: TYPES.FETCH_GET_PERSON_LOADING });
+
+  const res = await moviedb.get(`/person/${id}`);
+  await dispatch({
+    type: TYPES.FETCH_GET_PERSON,
+    payload: res.data
+  })
+
+  await dispatch(getMoviesWithPerson(id, page))
+
+  dispatch({ type: TYPES.FETCH_GET_PERSON_FINISHED });
+}
 
 
 export const clearMovies = () => {
   return {
     type: TYPES.FETCH_MOVIE_LOADING
   }
+}
+
+export const getMoviesWithPerson = (id, page) => async (dispatch) =>{
+  const res = await moviedb.get(`/discover/movie`, {
+    params: {
+      with_cast: id,
+      page,
+      sort_by: 'popularity.desc',
+    }
+  })
+  dispatch({
+    type: TYPES.FETCH_MOVIES_WITH_PERSON,
+    payload: res.data
+  })
 }

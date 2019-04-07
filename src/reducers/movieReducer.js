@@ -12,6 +12,8 @@ export default (state = INITAL_STATE, action) => {
       return { ...state, loading: true };
     case TYPES.FETCH_GET_MOVIE_FINISHED:
       return { ...state, loading: false }
+    case TYPES.FETCH_GET_CAST:
+      return { ...state, ...action.payload }
     default:
       return state;
   }

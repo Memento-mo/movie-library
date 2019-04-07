@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import Rating from './Rating';
+import SliderSlick from './SliderSlick';
 
 const Wrapped = styled.div`
   width: 1100px;
-  margin: 0 auto;
-  margin-top: 40px;
+  margin: 40px auto 80px auto;
   font-weight: 700;
 `;
 
@@ -91,38 +91,28 @@ const Link = styled(NavLink)`
   }
 `; 
 
-const MovieDescription = ({ movie: { 
-    title,
-    poster_path,
-    overview,
-    vote_average,
-    homepage,
-    release_date,
-    budget,
-    original_title,
-    production_countries,
-    genres,
-    runtime,
-    spoken_languages
-  }, 
-    baseUrl
-  }) => {
+const SliderWrapper = styled.div`
+  width: 700px;
+  margin-bottom: 20px;
+`;
+
+const MovieItem = ({ baseUrl, movie }) => {
   return (
     <Wrapped>
-      <Title>{title} ({original_title})</Title>
+      <Title>{movie.title} ({movie.original_title})</Title>
       <Content>
         <Img>
-          <Image src={`${baseUrl}w500${poster_path}`} alt="poster"/>
+          <Image src={`${baseUrl}w500${movie.poster_path}`} alt="poster"/>
         </Img>
 
         <Description>
           <Info>
               <Countries>
-                { countries(production_countries) } 
+                { countries(movie.production_countries) } 
               </Countries>
 
               <Year>
-                { countries(spoken_languages) } / {runtime} мин / {years(release_date)} 
+                { countries(movie.spoken_languages) } / {movie.runtime} мин / {years(movie.release_date)} 
               </Year>
           </Info>
 
@@ -131,9 +121,9 @@ const MovieDescription = ({ movie: {
             <Subdescr>
               <RatingsWrapper>
                 <Rating 
-                  number={vote_average}/>
+                  number={movie.vote_average}/>
                 <RatingNumber>
-                  { vote_average }
+                  { movie.vote_average }
                 </RatingNumber>
               </RatingsWrapper>
             </Subdescr>
@@ -141,22 +131,31 @@ const MovieDescription = ({ movie: {
 
           <Budget>
             <SubTitle>Бюджет:</SubTitle>
-            <Subdescr>{budget}$</Subdescr>
+            <Subdescr>{movie.budget}$</Subdescr>
           </Budget>
 
           <Genres>
             <SubTitle>Жанры:</SubTitle>
-            <Subdescr>{ getGenres(genres) }</Subdescr>
+            <Subdescr>{ getGenres(movie.genres) }</Subdescr>
           </Genres>
 
           <Overview>
             <SubTitle>Описание:</SubTitle>
-            <Subdescr>{overview}</Subdescr>
+            <Subdescr>{movie.overview}</Subdescr>
           </Overview>
-          
-          {/* <div>Страница фильма {homepage} </div> */}
+
+          <SliderWrapper>
+            <SubTitle>Актеры:</SubTitle>
+            <SliderSlick cast={movie.cast} baseUrl={baseUrl}/>
+          </SliderWrapper>
+
+          {/* <SliderWrapper>
+            <SubTitle>Съемочная команда:</SubTitle>
+            <SliderSlick cast={crew} baseUrl={baseUrl}/>
+          </SliderWrapper> */}
         </Description>
       </Content>
+    
     </Wrapped>
   )
 }
@@ -168,7 +167,8 @@ const countries = items => {
 const getGenres = items => {
   return items.map(item => 
     <Link 
-      to={`${process.env.PUBLIC_URL}/genre/${item.name}`}>
+      to={`${process.env.PUBLIC_URL}/genre/${item.name}`}
+      key={item.id}>
         {item.name + ' '}
     </Link>
   )
@@ -178,4 +178,4 @@ const years = year => {
   return year.split('-')[0]
 }
 
-export default MovieDescription
+export default MovieItem

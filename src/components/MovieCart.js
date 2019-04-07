@@ -15,7 +15,7 @@ const CardImage = styled.figure``;
 const Card = styled.div``;
 const Wrapped = styled.div``;
 
-const MovieItem = ({ movies }) => {
+const MovieCart = ({ movies }) => {
   const { poster_path, overview, original_title, id } = movies
   return (
     <Link to={`${process.env.PUBLIC_URL}/movie/${id}`}>
@@ -39,4 +39,4 @@ const MovieItem = ({ movies }) => {
     )
 }
 
-export default MovieItem
+export default MovieCart

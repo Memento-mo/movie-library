@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getMovie } from '../actions/index';
 
 import Loader from '../components/Loader';
-import MovieDescription from '../components/Movie-description';
+import MovieItem from '../components/MovieItem';
 
 const LoaderWrapper = styled.div`
   position: absolute;
@@ -24,11 +24,10 @@ const MovieDetails = ({ match, getMovie, movie, loading, geral }) => {
         <Loader/>
       </LoaderWrapper> 
     : 
-      <MovieDescription movie={movie} baseUrl={secure_base_url}/>
+      <MovieItem movie={movie} baseUrl={secure_base_url}/>
 }
 
 const mapStateToProps = ({ movie, geral }) => {
-  console.log(movie)
   return {
     movie,
     loading: movie.loading,
