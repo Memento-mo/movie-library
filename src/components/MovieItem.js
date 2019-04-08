@@ -7,6 +7,9 @@ import SliderSlick from './SliderSlick';
 import ModalVideo from 'react-modal-video';
 import Button from './Button';
 
+import trailer from '../icons/trailer.svg';
+import site from '../icons/site.svg';
+
 import '../../node_modules/react-modal-video/scss/modal-video.scss';
 
 const Wrapped = styled.div`
@@ -264,7 +267,7 @@ const MovieItem = ({ baseUrl, movie }) => {
             { movie.homepage === '' ? 
                 null 
               : <WrappedLink target="_blank" rel="noopener noreferrer" href={movie.homepage} >
-                  <Button title="Сайт фильма" />
+                  <Button title="Сайт фильма" icon={site}/>
                 </WrappedLink>
             }
             
@@ -285,7 +288,7 @@ const renderVideo = (videos, isOpen, setOpen) => {
   return (
     <React.Fragment>
       <div onClick={() => setOpen(true)}>
-        <Button title="Трейлер" icon="play" />
+        <Button title="Трейлер" icon={trailer} />
       </div>
       <ModalVideo
         channel="youtube"
