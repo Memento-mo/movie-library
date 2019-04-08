@@ -18,12 +18,13 @@ import Genre from './Genre';
 import MovieDetails from './MovieDetails';
 import Person from './Person';
 import Search from './Search';
+import Footer from './Footer';
 
 const Wrapped = styled.div`
   max-width: 1500px;
   width: 100%;
   margin: 0 auto;
-
+  min-height: calc(100vh - 70px);
   @media ${props => props.theme.mediaQueries.larger} {
     width: 95%;
   }
@@ -70,6 +71,8 @@ const App = ({ init, isLoading }) => {
             <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`} />
           </Switch>
         </Wrapped>
+
+        <Footer />
       </Router>
     )
 }
