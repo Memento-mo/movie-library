@@ -19,7 +19,7 @@ const MovieCart = ({ movies }) => {
   const { poster_path, overview, original_title, id } = movies
   return (
     <Link to={`${process.env.PUBLIC_URL}/movie/${id}`}>
-      <Wrapped className="hover-wrapped">
+      <Wrapped className="container-cart">
         <Card className="card" data-effect="zoom">
           <CardImage className="card__image">
             <Img src={`https://image.tmdb.org/t/p/w342${poster_path}`} alt="short"/>

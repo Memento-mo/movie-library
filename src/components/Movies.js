@@ -4,41 +4,104 @@ import styled from 'styled-components';
 import MovieCart from './MovieCart';
 import Pagination from './Pagination';
 
-const Section = styled.section`
-  margin-bottom: 50px;
-`;
+// const Section = styled.section`
+//   margin-bottom: 50px;
+// `;
 
-const MoviesContainer = styled.div`
-  width: 84%;
-  margin: 0 auto;
+const MoviesContainer = styled.section`
+  margin-bottom: 50px;
+  width: 100%;
+  position: relative;
+
+  @media ${props => props.theme.mediaQueries.larger} {
+    left: 2%;
+  }
+  @media ${props => props.theme.mediaQueries.large} {
+    width: 92%;
+    left: 5%;
+  }
+  @media ${props => props.theme.mediaQueries.medium} {
+    left: 6%;
+  }
+  @media ${props => props.theme.mediaQueries.small} {
+    left: 12%;
+    width: 86%;
+  }
+  @media ${props => props.theme.mediaQueries.smallest} {
+    left: 18%;
+    width: 80%;  
+  }
+  @media ${props => props.theme.mediaQueries.verySmallest} {
+    left: 13%;
+  }
+  @media ${props => props.theme.mediaQueries.mobile} {
+    left: 27%;
+    width: 43%;
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    left: 25%;
+  }
+
+  @media ${props => props.theme.mediaQueries.veryMobile} {
+    left: 19%;
+  }
 `;
 
 const Wrapped = styled.div`
-  max-width: 250px;
-  width: 100%;
   margin-top: 54px;
   display: grid;
-  grid-template-columns: repeat(5, 100%);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
+  grid-template-rows: repeat(4, 470px);
   justify-items: center;
   grid-column-gap: 45px;
   grid-row-gap: 30px;
+
+  @media ${props => props.theme.mediaQueries.larger} {
+    grid-column-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+  }
+  @media ${props => props.theme.mediaQueries.large} {
+    grid-column-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
+  }
+
+  @media ${props => props.theme.mediaQueries.medium} {
+    grid-column-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+  }
+  @media ${props => props.theme.mediaQueries.small} {
+    grid-column-gap: 50px;
+  }
+  @media ${props => props.theme.mediaQueries.smaller} {
+    grid-column-gap: 10px;
+  }
+  @media ${props => props.theme.mediaQueries.smallest} {
+    grid-column-gap: 50px;
+  }
+  @media ${props => props.theme.mediaQueries.verySmallest} {
+    grid-column-gap: 10px;
+  }
+  @media ${props => props.theme.mediaQueries.mobile} {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
+  }
 `;
 
 const Movies = ({ movies }) => {
   const result = movies.results
   return (
-    <Section>
-      <MoviesContainer>
+    <MoviesContainer>
 
-        <Wrapped> 
-          { 
-            result.map(movie => <MovieCart movies={movie} key={movie.id}/>) 
-          } 
-        </Wrapped>
+      <Wrapped> 
+        { 
+          result.map(movie => <MovieCart movies={movie} key={movie.id}/>) 
+        } 
+      </Wrapped>
 
-        <Pagination movies={movies}/>
-      </MoviesContainer>
-    </Section>
+      <Pagination movies={movies}/>
+    </MoviesContainer>
   )
 }
 

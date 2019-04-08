@@ -182,3 +182,9 @@
 .card:hover + .card__name {
   opacity: 0;
 }
+
+
+/* .container-cart {
+  max-width: 260px;
+  width: 100%;
+} */

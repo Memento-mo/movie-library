@@ -22,6 +22,11 @@ const Home = styled.div`
   &:hover {
     background-color: rgba(0, 0, 0, 0.08);  
   }
+
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    font-size: 12px;
+    margin-right: 5px;
+  }
 `;
 
 const Header = () => {

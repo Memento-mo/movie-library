@@ -7,6 +7,7 @@ import queryString from 'query-string';
 import Loader from '../components/Loader';
 import MovieItem from '../components/MovieItem';
 import Movies from '../components/Movies';
+import Title from '../components/Title';
 
 const LoaderWrapper = styled.div`
   position: absolute;
@@ -14,13 +15,9 @@ const LoaderWrapper = styled.div`
   left: 47.5%;
 `;
 
-const Title = styled.div`
+const Section = styled.section`
+  width: 100%;
   text-align: center;
-  font-size: 40px;
-`;
-
-const MoviesContainer = styled.div`
-  width: 85%;
   margin: 0 auto;
 `;
 
@@ -43,10 +40,11 @@ const MovieDetails = ({ match, getMovie, movie, loading, geral, location }) => {
       <Fragment>
         <MovieItem movie={movie} baseUrl={secure_base_url}/>
         
-        <Title>Рекомендации</Title>
-        <MoviesContainer>
+        <Section>
+          <Title title={"Рекомендации"} subtitle={'Фильмы'} />
+
           <Movies movies={movie} />
-        </MoviesContainer>
+        </Section>
       </Fragment>
 }
 

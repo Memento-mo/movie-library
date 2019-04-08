@@ -19,6 +19,25 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media ${props => props.theme.mediaQueries.medium} {
+    max-width: 1060px;
+  }
+  @media ${props => props.theme.mediaQueries.small} {
+    max-width: 900px;
+  }
+  @media ${props => props.theme.mediaQueries.smaller} {
+    max-width: 700px;
+  }
+  @media ${props => props.theme.mediaQueries.smallest} {
+    max-width: 600px;
+  }
+  @media ${props => props.theme.mediaQueries.mobile} {
+    max-width: 430px;
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    max-width: 300px;
+  }
 `;
 
 const TopSection = () => {

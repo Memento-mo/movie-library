@@ -16,6 +16,10 @@ const Color = styled.div`
   text-transform: capitalize;
   font-size: 16px;
   font-family: 'Comfortaa', cursive;
+
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    font-size: 12px;
+  }
 `;
 
 function RenderPropsMenu({ genres = []}) {

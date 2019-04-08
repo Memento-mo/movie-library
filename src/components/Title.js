@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 
@@ -8,7 +8,7 @@ const TitleName = styled.div`
 
 const Wrapped = styled.div`
   margin-top: 20px;
-  text-align: center;
+  
   color: ${props => props.theme.colors.dark};
 `;
 

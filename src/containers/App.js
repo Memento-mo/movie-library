@@ -19,7 +19,18 @@ import MovieDetails from './MovieDetails';
 import Person from './Person';
 import Search from './Search';
 
-const Wrapped = styled.div``;
+const Wrapped = styled.div`
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+
+  @media ${props => props.theme.mediaQueries.larger} {
+    width: 95%;
+  }
+
+  @media ${props => props.theme.mediaQueries.large} {
+  }
+`;
 
 const LoaderWrapper = styled.div`
   display: flex;
@@ -38,9 +49,9 @@ const App = ({ init, isLoading }) => {
       </LoaderWrapper>
     ) : (
       <Router history={history}>
-        <Wrapped>
-          <TopSection/>
+        <TopSection/>  
 
+        <Wrapped>
           <Switch>
             <Route path="/" render={() => (
               <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`}/>
@@ -58,7 +69,6 @@ const App = ({ init, isLoading }) => {
 
             <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`} />
           </Switch>
-
         </Wrapped>
       </Router>
     )

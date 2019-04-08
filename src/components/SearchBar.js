@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+// import styled from 'styled-components';
 import history from '../history';
 
 import '../css/search.css';
-
-// const Button = styled.button`
-//   border: none;
-// `;
 
 const SearchBar = () => {
   const [ input, setInput ] = useState('');

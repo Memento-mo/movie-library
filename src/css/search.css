@@ -125,3 +125,28 @@ html, body {
 .search {
   border: none;
 }
+
+
+@media only screen and (max-width: 41.875em) {
+  .container {
+    display: none;
+  }
+
+  .container {
+    left: 0%;
+  }
+  .container input {
+    max-width: 100px;
+    padding: 0 30px 0 20px;
+  }
+
+  .container input:focus ~ .search {
+    right: -120px;
+  }
+}
+
+@media only screen and (max-width: 25em) {
+  .container {
+    display: none;
+  }
+}

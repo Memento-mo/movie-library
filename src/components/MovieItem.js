@@ -13,29 +13,109 @@ const Wrapped = styled.div`
   width: 1100px;
   margin: 40px auto 80px auto;
   font-weight: 700;
+
+  @media ${props => props.theme.mediaQueries.small} {
+    width: 1060px;
+  }
+
+  @media ${props => props.theme.mediaQueries.smaller} {
+    width: 900px;
+  }
+  @media ${props => props.theme.mediaQueries.smallest} {
+    width: 800px;
+  }
+  @media ${props => props.theme.mediaQueries.verySmallest} {
+    width: 650px;
+  }
+  @media ${props => props.theme.mediaQueries.mobile} {
+    width: 500px;
+  }
+  @media ${props => props.theme.mediaQueries.middleMobile} {
+    width: 400px;
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    width: 300px;
+  }
 `;
 
 const Img = styled.div`
   margin-right: 40px;
   height: 550px;
+
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    margin-right: 0;
+  }
 `;
 
 const Image = styled.img`
   border-radius: 15px;
   box-shadow: 0 2px 25px 10px rgba(48,63,159, .2);
   height: 100%;
+
+  @media ${props => props.theme.mediaQueries.small} {
+    height: 85%;
+  }
+
+  @media ${props => props.theme.mediaQueries.smaller} {
+    height: 100%;
+  }
+
+  @media ${props => props.theme.mediaQueries.middleMobile} {
+    height: 80%;
+  }
 `;
 const Description = styled.div`
   color: rgba(55,71,79,1);
   margin-top: 10px;
+  width: 850px;
+
+  @media ${props => props.theme.mediaQueries.large} {
+    width: 750px;
+  }
+  @media ${props => props.theme.mediaQueries.small} {
+    width: 700px;
+  }
+
+  @media ${props => props.theme.mediaQueries.smaller} {
+    margin-top: 50px;
+  }
+
+  @media ${props => props.theme.mediaQueries.verySmallest} {
+    width: 650px;
+  }
+  @media ${props => props.theme.mediaQueries.mobile} {
+    width: 500px;
+  }
+  @media ${props => props.theme.mediaQueries.middleMobile} {
+    width: 400px;
+    margin-top: 0;
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    width: 300px;
+  }
 `;
 const Content = styled.div`
   display: flex;
   margin-top: 60px;
+
+  @media ${props => props.theme.mediaQueries.smaller} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const Title = styled.div`
   text-align: center;
   font-size: 40px;
+
+  @media ${props => props.theme.mediaQueries.small} {
+    font-size: 35px;
+  }
+  @media ${props => props.theme.mediaQueries.mobile} {
+    font-size: 20px;
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    font-size: 16px;
+  }
 `;
 
 const InfoHeader = styled.div`
@@ -43,6 +123,10 @@ const InfoHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    font-size: 10px;
+  }
 `;
 
 const Year = styled.div`
@@ -53,6 +137,13 @@ const Countries = styled.div``;
 const SubTitle = styled.div`
   font-size: 22px;
   color: black;
+
+  @media ${props => props.theme.mediaQueries.small} {
+    font-size: 18px;
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    font-size: 14px;
+  }
 `;
 
 const RatingsWrapper = styled.div`
@@ -64,9 +155,12 @@ const RatingInfo = styled.div`
   margin-bottom: 8px;
 `;
 
-
 const Subdescr = styled.div`
   margin-left: 10px;
+
+  @media ${props => props.theme.mediaQueries.small} {
+    font-size: 12px;
+  }
 `;
 
 const RatingNumber = styled.div`
@@ -86,8 +180,12 @@ const Link = styled(NavLink)`
 `; 
 
 const SliderWrapper = styled.div`
-  width: 700px;
+  width: 100%;
   margin-bottom: 20px;
+
+  @media ${props => props.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `;
 
 const InfoMovie = styled.div`
@@ -110,7 +208,6 @@ const MovieItem = ({ baseUrl, movie }) => {
 
   const genres = getGenres(movie.genres);
 
-console.log(movie)
   return (
     <Wrapped>
       <Title>{movie.title} ({movie.original_title})</Title>

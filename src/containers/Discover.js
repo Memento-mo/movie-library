@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { getMovies } from '../actions/index';
@@ -8,8 +8,9 @@ import Title from '../components/Title';
 import Movies from '../components/Movies';
 import Loader from '../components/Loader';
 
-const Wrapped = styled.div`
-  width: 90%;
+const Section = styled.section`
+  width: 100%;
+  text-align: center;
   margin: 0 auto;
 `;
 
@@ -32,11 +33,11 @@ const Discover = ({ match, getMovies, movies, loading, location }) => {
     return <LoaderWrapper><Loader /></LoaderWrapper>
   }
   return (
-    <Wrapped>
+    <Section>
       <Title title={match.params.name} subtitle={'Фильмы'} />
 
       <Movies movies={movies} />
-    </Wrapped>
+    </Section>
   )
 }
 
