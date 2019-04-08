@@ -51,7 +51,7 @@ const Wrapped = styled.div`
   margin-top: 54px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
-  grid-template-rows: repeat(auto, 470px);
+  grid-template-rows: repeat(5, 470px);
   justify-items: center;
   grid-column-gap: 45px;
   grid-row-gap: 30px;
