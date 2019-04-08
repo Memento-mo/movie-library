@@ -23,17 +23,14 @@ const SearchBar = () => {
   }
 
   return (
-    <form type="submit" onSubmit={onFormSubmit}>
-      <div className="container">
-        <input 
+  <form type="submit" onSubmit={onFormSubmit}>
+    <input 
           type="text" 
           placeholder="Search..."
           value={input} 
-          onChange={inputChange}
-          />
-        <div className="search"></div>
-      </div>
-    </form>
+          onChange={inputChange} />
+    <i className="fa fa-search" />
+  </form>
   )
 }
 
