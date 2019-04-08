@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { 
-  Router,
+  HashRouter,
   Switch, 
   Route, 
   Redirect } from 'react-router-dom';
@@ -48,7 +48,7 @@ const App = ({ init, isLoading }) => {
         <Loader/>
       </LoaderWrapper>
     ) : (
-      <Router history={history}>
+      <HashRouter history={history}>
         <TopSection/>  
 
         <Wrapped>
@@ -70,7 +70,7 @@ const App = ({ init, isLoading }) => {
             <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`} />
           </Switch>
         </Wrapped>
-      </Router>
+      </HashRouter>
     )
 }
 
