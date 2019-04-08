@@ -35,6 +35,9 @@ const Container = styled.div`
   @media ${props => props.theme.mediaQueries.mobile} {
     max-width: 430px;
   }
+  @media only screen and (max-width: 430px) {
+    max-width: 370px;
+  }
   @media ${props => props.theme.mediaQueries.minMobile} {
     max-width: 300px;
   }
