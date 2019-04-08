@@ -10,10 +10,12 @@ import Movies from '../components/Movies';
 
 import '../css/search.css';
 
-const Wrapped = styled.div`
-  width: 90%;
+const Section = styled.section`
+  width: 100%;
+  text-align: center;
   margin: 0 auto;
 `;
+
 
 const LoaderWrapper = styled.div`
   position: absolute;
@@ -34,11 +36,11 @@ const Search = ({ location, match, search, getMoviesSearch, loading }) => {
   }
 
   return (
-    <Wrapped>
-      <Title title={match.params.query} subtitle={"Фильмы"}/>
+  <Section>
+    <Title title={match.params.query} subtitle={'Фильмы'} />
 
-      <Movies movies={search}/>
-    </Wrapped>
+    <Movies movies={search} />
+  </Section>
   )
 }
 
