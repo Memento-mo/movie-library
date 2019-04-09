@@ -190,12 +190,10 @@ const Link = styled(NavLink)`
 `; 
 
 const SliderWrapper = styled.div`
-  width: 100%;
+  width: 85%;
   margin-bottom: 20px;
-
-  @media ${props => props.theme.mediaQueries.mobile} {
-    display: none;
-  }
+  text-align: center;
+  margin: 0 auto
 `;
 
 const InfoMovie = styled.div`
