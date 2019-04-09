@@ -15,6 +15,10 @@ const SliderStyles = styled(Slider)`
     color: ${props => props.theme.colors.blue};
   }
 
+  .slick-prev {
+    right: -21px;
+  }
+
   @media ${props => props.theme.mediaQueries.veryMobile} {
     .slick-next {
       opacity: 0;
@@ -23,7 +27,6 @@ const SliderStyles = styled(Slider)`
     .slick-prev {
       opacity: 0;
     }
-
   }
 `;
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import imdb from '../icons/logo-imdb.png';
 import tmdb from '../icons/logo.svg';
 
 const Wrapped = styled.div`

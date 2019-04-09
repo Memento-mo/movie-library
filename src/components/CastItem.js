@@ -6,14 +6,11 @@ const ImgWrapper = styled.div``;
 
 const Img = styled.img`
   border-radius: 5px;
-  height: 80px;
+  height: 90px;
   width: auto;
-  height: 60px;
-  width: 40px;
 
   @media ${props => props.theme.mediaQueries.veryMobile} {
-    height: 60px;
-    width: 40px;
+    height: 80px;
   }
 `;
 
