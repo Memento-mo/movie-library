@@ -4,23 +4,16 @@ import { connect } from 'react-redux';
 import { getPerson } from '../actions/index';
 import queryString from 'query-string';
 
-import Loader from '../components/Loader';
 import PersonItem from '../components/PersonItem';
 import Movies from '../components/Movies';
 import Title from '../components/Title';
-
-const LoaderWrapper = styled.div`
-  position: absolute;
-  top: 45%;
-  left: 47.5%;
-`;
+import LoaderWrapper from './LoaderWrapper';
 
 const Section = styled.section`
   width: 100%;
   text-align: center;
   margin: 0 auto;
 `;
-
 
 const Person = ({ match, loading, person, getPerson, geral, location }) => {
   const params = queryString.parse(location.search)
@@ -32,9 +25,7 @@ const Person = ({ match, loading, person, getPerson, geral, location }) => {
   const { secure_base_url } = geral.base.images;
 
   return loading ? 
-      <LoaderWrapper>
-        <Loader/>
-      </LoaderWrapper> 
+      <LoaderWrapper />
     : 
       <Fragment>
         <PersonItem person={person} baseUrl={ secure_base_url }/>

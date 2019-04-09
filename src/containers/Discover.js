@@ -6,7 +6,7 @@ import queryString from 'query-string';
 
 import Title from '../components/Title';
 import Movies from '../components/Movies';
-import Loader from '../components/Loader';
+import LoaderWrapper from './LoaderWrapper';
 
 const Section = styled.section`
   width: 100%;
@@ -14,11 +14,6 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-const LoaderWrapper = styled.div`
-  position: absolute;
-  top: 45%;
-  left: 47.5%;
-`;
 
 const Discover = ({ match, getMovies, movies, loading, location }) => {
 
@@ -30,8 +25,9 @@ const Discover = ({ match, getMovies, movies, loading, location }) => {
   }, [params.page, match.params.name])
 
   if(loading) {
-    return <LoaderWrapper><Loader /></LoaderWrapper>
+    return <LoaderWrapper />
   }
+  
   return (
     <Section>
       <Title title={match.params.name} subtitle={'Фильмы'} />

@@ -59,8 +59,12 @@ const Img = styled.div`
   margin-right: 40px;
   height: 550px;
 
-  @media ${props => props.theme.mediaQueries.minMobile} {
+  @media ${props => props.theme.mediaQueries.smaller} {
     margin-right: 0;
+  }
+
+  @media ${props => props.theme.mediaQueries.middleMobile} {
+    height: 420px;
   }
 `;
 
@@ -78,7 +82,7 @@ const Image = styled.img`
   }
 
   @media ${props => props.theme.mediaQueries.middleMobile} {
-    height: 80%;
+    height: 90%;
   }
 `;
 

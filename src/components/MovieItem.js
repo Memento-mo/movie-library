@@ -71,7 +71,7 @@ const Image = styled.img`
     height: 80%;
   }
   @media ${props => props.theme.mediaQueries.middleMobile} {
-    height: 91%;
+    height: 90%;
   }
 `;
 const Description = styled.div`

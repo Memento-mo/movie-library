@@ -4,16 +4,10 @@ import { connect } from 'react-redux';
 import { getMovie } from '../actions/index';
 import queryString from 'query-string';
 
-import Loader from '../components/Loader';
 import MovieItem from '../components/MovieItem';
 import Movies from '../components/Movies';
 import Title from '../components/Title';
-
-const LoaderWrapper = styled.div`
-  position: absolute;
-  top: 45%;
-  left: 47.5%;
-`;
+import LoaderWrapper from './LoaderWrapper';
 
 const Section = styled.section`
   width: 100%;
@@ -33,9 +27,7 @@ const MovieDetails = ({ match, getMovie, movie, loading, geral, location }) => {
   const { secure_base_url } = geral.base.images;
 
   return loading ? 
-      <LoaderWrapper>
-        <Loader/>
-      </LoaderWrapper> 
+      <LoaderWrapper />
     : 
       <Fragment>
         <MovieItem movie={movie} baseUrl={secure_base_url}/>
