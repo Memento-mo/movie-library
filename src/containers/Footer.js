@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 import imdb from '../icons/logo-imdb.png';
+import tmdb from '../icons/logo.svg';
 
 const Wrapped = styled.div`
   height: 200px;
@@ -28,12 +29,12 @@ const Content = styled.div`
 `;
 
 const Logo = styled.div`
-  padding-top: 30px;
+  padding-top: 20px;
 `;
 
 const Image = styled.img`
-  width: 80px;
-  height: 50px;
+  width: 200px;
+  height: 150px;
 `;
 
 const Link = styled.a``;
@@ -44,7 +45,7 @@ const Footer = () => {
       <Content>
         <Logo>
           <Link href="https://www.themoviedb.org" target="_blank">
-            <Image src={imdb} alt="imdb"/>
+            <Image src={tmdb} alt="tmdb"/>
           </Link>
         </Logo>
       </Content>
