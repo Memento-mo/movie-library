@@ -96,6 +96,12 @@ export const clearMovies = () => {
   }
 }
 
+export const clearRecom = () => {
+  return {
+    type: TYPES.FETCH_GET_MOVIE_LOADING
+  }
+}
+
 export const getMoviesWithPerson = (id, page) => async (dispatch) => {
   const res = await moviedb.get(`/discover/movie`, {
     params: {

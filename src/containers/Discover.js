@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { getMovies } from '../actions/index';
+import { getMovies, clearMovies } from '../actions/index';
 import queryString from 'query-string';
+import { animateScroll as scroll } from 'react-scroll';
 
 import Title from '../components/Title';
 import Movies from '../components/Movies';
@@ -20,8 +21,7 @@ const Discover = ({ match, getMovies, movies, loading, location }) => {
   const params = queryString.parse(location.search)
 
   useEffect(() => {
-    console.log('update Discover')
-    getMovies(match.params.name, params.page)
+    initDiscover(match.params.name, params.page, getMovies)
   }, [params.page, match.params.name])
 
   if(loading) {
@@ -35,6 +35,14 @@ const Discover = ({ match, getMovies, movies, loading, location }) => {
       <Movies movies={movies} />
     </Section>
   )
+}
+
+const initDiscover = (name, page, getMovies) => {  
+  scroll.scrollToTop({
+    smooth: true
+  })
+  getMovies(name, page)
+  return () => clearMovies()
 }
 
 const mapStateToProps = ({ movies }) => {

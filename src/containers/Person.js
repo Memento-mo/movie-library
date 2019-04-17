@@ -8,6 +8,7 @@ import PersonItem from '../components/PersonItem';
 import Movies from '../components/Movies';
 import Title from '../components/Title';
 import LoaderWrapper from './LoaderWrapper';
+import { animateScroll as scroll } from 'react-scroll';
 
 const Section = styled.section`
   width: 100%;
@@ -19,7 +20,7 @@ const Person = ({ match, loading, person, getPerson, geral, location }) => {
   const params = queryString.parse(location.search)
 
   useEffect(() => {
-    getPerson(match.params.id, params.page)
+    getPersonDetails(match.params.id, params.page, getPerson)
   }, [match.params.id, params.page])
 
   const { secure_base_url } = geral.base.images;
@@ -30,13 +31,20 @@ const Person = ({ match, loading, person, getPerson, geral, location }) => {
       <Fragment>
         <PersonItem person={person} baseUrl={ secure_base_url }/>
 
-
         <Section>
           <Title title={"Фильмы с актером"} subtitle={'Фильмы'} />
 
           <Movies movies={person} />
         </Section>
       </Fragment>
+}
+
+const getPersonDetails = (id, page, getPerson) => {
+  scroll.scrollToTop({
+    smooth: true,
+    delay: 500
+  })
+  getPerson(id, page)
 }
 
 const mapStateToProps = ({ person, geral }) => {

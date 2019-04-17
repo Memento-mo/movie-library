@@ -1,8 +1,9 @@
 import React, { useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { getMovie } from '../actions/index';
+import { getMovie, clearRecom } from '../actions/index';
 import queryString from 'query-string';
+import { animateScroll as scroll } from 'react-scroll';
 
 import MovieItem from '../components/MovieItem';
 import Movies from '../components/Movies';
@@ -15,13 +16,11 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-
 const MovieDetails = ({ match, getMovie, movie, loading, geral, location }) => {
-
   const params = queryString.parse(location.search)
 
   useEffect(() => {
-    getMovie(match.params.id, params.page)
+    getMovieDetails(match.params.id, params.page, getMovie)
   }, [match.params.id, params.page])
 
   const { secure_base_url } = geral.base.images;
@@ -30,14 +29,23 @@ const MovieDetails = ({ match, getMovie, movie, loading, geral, location }) => {
       <LoaderWrapper />
     : 
       <Fragment>
-        <MovieItem movie={movie} baseUrl={secure_base_url}/>
-        
+        <MovieItem movie={movie} baseUrl={secure_base_url}/> 
+
         <Section>
-          <Title title={"Рекомендации"} subtitle={'Фильмы'} />
+          <Title title={"Рекомендации"} subtitle={"Фильмы"} />
 
           <Movies movies={movie} />
         </Section>
       </Fragment>
+}
+
+const getMovieDetails = (id, page, getMovie) => {
+  scroll.scrollToTop({
+    smooth: true,
+    delay: 500
+  })
+  getMovie(id, page)
+  return () => clearRecom()
 }
 
 const mapStateToProps = ({ movie, geral }) => {

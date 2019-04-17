@@ -24,7 +24,7 @@ const MoviesContainer = styled.section`
     left: 6%;
   }
   @media ${props => props.theme.mediaQueries.small} {
-    left: 12%;
+    left: 11%;
     width: 86%;
   }
   @media ${props => props.theme.mediaQueries.smallest} {
@@ -32,18 +32,18 @@ const MoviesContainer = styled.section`
     width: 80%;  
   }
   @media ${props => props.theme.mediaQueries.verySmallest} {
-    left: 13%;
+    left: 15%;
   }
   @media ${props => props.theme.mediaQueries.mobile} {
     left: 27%;
     width: 43%;
   }
   @media ${props => props.theme.mediaQueries.minMobile} {
-    left: 25%;
+    left: 22%;
   }
 
   @media ${props => props.theme.mediaQueries.veryMobile} {
-    left: 19%;
+    left: 17%;
   }
 `;
 

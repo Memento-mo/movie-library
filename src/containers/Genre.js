@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { getMovies, clearMovies } from '../actions/index';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+import { animateScroll as scroll } from 'react-scroll';
 
 import Title from '../components/Title';
 import Movies from '../components/Movies';
@@ -39,6 +40,10 @@ const Genre = ({ match, getMovies, movies, loading, location, clearMovies }) => 
 }
 
 const updateMovies = (name, page, clearMovies, getMovies) => {
+  scroll.scrollToTop({
+    smooth: true
+  })
+
   getMovies(name, page)
   return () => clearMovies()
 }
