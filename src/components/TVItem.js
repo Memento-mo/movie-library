@@ -1,16 +1,9 @@
-import React, { useState, } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import Rating from './Rating';
-import SliderSlick from './SliderSlick';
-import ModalVideo from 'react-modal-video';
-import Button from './Button';
 
-import trailer from '../icons/trailer.svg';
-import site from '../icons/site.svg';
-
-import '../../node_modules/react-modal-video/scss/modal-video.scss';
 
 const Wrapped = styled.div`
   width: 1100px;
@@ -41,6 +34,31 @@ const Wrapped = styled.div`
   }
 `;
 
+const Title = styled.div`
+  text-align: center;
+  font-size: 40px;
+
+  @media ${props => props.theme.mediaQueries.small} {
+    font-size: 35px;
+  }
+  @media ${props => props.theme.mediaQueries.mobile} {
+    font-size: 20px;
+  }
+  @media ${props => props.theme.mediaQueries.minMobile} {
+    font-size: 16px;
+  }
+`;
+
+const Content = styled.div`
+  display: flex;
+  margin-top: 60px;
+
+  @media ${props => props.theme.mediaQueries.smaller} {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 const Img = styled.div`
   margin-right: 40px;
   height: 550px;
@@ -53,7 +71,6 @@ const Img = styled.div`
     height: 420px;
   }
 `;
-
 const Image = styled.img`
   border-radius: 15px;
   box-shadow: 0 2px 25px 10px rgba(48,63,159, .2);
@@ -74,6 +91,7 @@ const Image = styled.img`
     height: 90%;
   }
 `;
+
 const Description = styled.div`
   color: rgba(55,71,79,1);
   margin-top: 10px;
@@ -104,29 +122,6 @@ const Description = styled.div`
     width: 300px;
   }
 `;
-const Content = styled.div`
-  display: flex;
-  margin-top: 60px;
-
-  @media ${props => props.theme.mediaQueries.smaller} {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-const Title = styled.div`
-  text-align: center;
-  font-size: 40px;
-
-  @media ${props => props.theme.mediaQueries.small} {
-    font-size: 35px;
-  }
-  @media ${props => props.theme.mediaQueries.mobile} {
-    font-size: 20px;
-  }
-  @media ${props => props.theme.mediaQueries.minMobile} {
-    font-size: 16px;
-  }
-`;
 
 const InfoHeader = styled.div`
   font-size: 12px;
@@ -139,10 +134,18 @@ const InfoHeader = styled.div`
   }
 `;
 
+const Companies = styled.div`
+  max-width: 400px;
+  height: auto;
+`;
+
 const Year = styled.div`
   margin-right: 4px;
 `;
-const Countries = styled.div``;
+
+const RatingInfo = styled.div`
+  margin-bottom: 8px;
+`;
 
 const SubTitle = styled.div`
   font-size: 22px;
@@ -156,15 +159,6 @@ const SubTitle = styled.div`
   }
 `;
 
-const RatingsWrapper = styled.div`
-  align-items: center;
-  display: flex;
-`;
-
-const RatingInfo = styled.div`
-  margin-bottom: 8px;
-`;
-
 const Subdescr = styled.div`
   margin-left: 10px;
 
@@ -173,11 +167,20 @@ const Subdescr = styled.div`
   }
 `;
 
+const RatingsWrapper = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
 const RatingNumber = styled.div`
   font-size: 12px;
   margin-left: 10px;
   position: relative;
   top: -1px;
+`;
+
+const InfoTv = styled.div`
+  margin-top: 10px;
 `;
 
 const Link = styled(NavLink)`
@@ -189,48 +192,26 @@ const Link = styled(NavLink)`
   }
 `; 
 
-const SliderWrapper = styled.div`
-  width: 85%;
-  margin-bottom: 20px;
-  text-align: center;
-  margin: 0 auto
-`;
-
-const InfoMovie = styled.div`
-  margin-top: 10px;
-`;
-
-const Buttons = styled.div`
-  display: flex;
-  margin-top: 5px;
-`;
-
-const WrappedLink = styled.a`
-  display: block;
-  margin-left: 10px;
-`;
-
-const MovieItem = ({ baseUrl, movie }) => {
-  const [isOpen, setOpen] = useState(false)
-
-  const genres = getGenres(movie.genres);
+const TVItem = ({ tv, baseUrl }) => {
+  console.log(tv)
+  const genres = getGenres(tv.genres);
 
   return (
     <Wrapped>
-      <Title>{movie.title} ({movie.original_title})</Title>
+      <Title>{tv.name} ({tv.original_name})</Title>
       <Content>
         <Img>
-          <Image src={`${baseUrl}w500${movie.poster_path}`} alt="poster"/>
+          <Image src={`${baseUrl}w500${tv.poster_path}`} alt="poster"/>
         </Img>
 
         <Description>
-          <InfoHeader>
-              <Countries>
-                { countries(movie.production_countries) } 
-              </Countries>
+        <InfoHeader>
+              <Companies>
+                { companies(tv.production_companies) } 
+              </Companies>
 
               <Year>
-                { countries(movie.spoken_languages) } / {movie.runtime} мин / {years(movie.release_date)} 
+                { tv.languages.map(lang => lang + ' ') } / {tv.episode_run_time} мин / {years(tv.first_air_date)} 
               </Year>
           </InfoHeader>
 
@@ -239,84 +220,39 @@ const MovieItem = ({ baseUrl, movie }) => {
             <Subdescr>
               <RatingsWrapper>
                 <Rating 
-                  number={movie.vote_average}/>
+                  number={tv.vote_average}/>
                 <RatingNumber>
-                  { movie.vote_average }
+                  { tv.vote_average }
                 </RatingNumber>
               </RatingsWrapper>
             </Subdescr>
           </RatingInfo>
 
-          <Info subTitle={"Бюджет:"} subDescr={`${movie.budget}$`}/>
-
           <Info subTitle={"Жанры:"} subDescr={genres}/>
           
-          <Info subTitle={"Описание:"} subDescr={`${movie.overview}`}/>
-
-          <SliderWrapper>
-            <Info subTitle={"Актеры:"}/>
-            <SliderSlick cast={movie.cast} baseUrl={baseUrl}/>
-          </SliderWrapper>
-
-          <Buttons>
-            { renderVideo(movie.videos.results, isOpen, setOpen) }
-
-            { movie.homepage === '' ? 
-                null 
-              : <WrappedLink target="_blank" rel="noopener noreferrer" href={movie.homepage} >
-                  <Button title="Сайт фильма" icon={site}/>
-                </WrappedLink>
-            }
-            
-          </Buttons>
         </Description>
+
       </Content>
-    
+
     </Wrapped>
-  )
-}
-
-const renderVideo = (videos, isOpen, setOpen) => {
-  if(videos.length === 0) {
-    return;
-  }
-  const { key } = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube')
-
-  return (
-    <React.Fragment>
-      <div onClick={() => setOpen(true)}>
-        <Button title="Трейлер" icon={trailer} />
-      </div>
-      <ModalVideo
-        channel="youtube"
-        isOpen={isOpen}
-        videoId={key}
-        onClose={() => setOpen(false)}
-      />
-  </React.Fragment>
   )
 }
 
 const Info = ({ subTitle, subDescr }) => {
   
   return !subDescr ? 
-        <InfoMovie>
+        <InfoTv>
           <SubTitle>{subTitle}</SubTitle>
-        </InfoMovie> 
+        </InfoTv> 
       :
-        <InfoMovie>
+        <InfoTv>
           <SubTitle>{subTitle}</SubTitle>
           <Subdescr>{subDescr}</Subdescr>
-        </InfoMovie>
+        </InfoTv>
     
 }
 
-
-const countries = (items = [])=> {
-  return items.map(item => item.name + ' ')
-}
-
-const getGenres = (items = []) => {
+const getGenres = items => {
   return items.map(item => 
     <Link 
       to={`${process.env.PUBLIC_URL}/genre/${item.name}`}
@@ -326,10 +262,13 @@ const getGenres = (items = []) => {
   )
 }
 
-const years = year => {
+const companies = (items = []) => {
+  return items.map(item => item.name + ' ')
+}
+
+const years = (year = []) => {
   return year.split('-')[0]
 }
 
 
-
-export default MovieItem
+export default TVItem

@@ -16,6 +16,7 @@ import Loader from '../components/Loader';
 import Discover from './Discover';
 import Genre from './Genre';
 import MovieDetails from './MovieDetails';
+import TVDetails from './TVDetails';
 import Person from './Person';
 import Search from './Search';
 import Footer from './Footer';
@@ -60,9 +61,11 @@ const App = ({ init, isLoading }) => {
 
             <Route path={`${process.env.PUBLIC_URL}/discover/:name`} component={Discover} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/genre/:name`} component={Genre} exact/>
+            <Route path={`${process.env.PUBLIC_URL}/genre/:type/:name`} component={Genre} exact/>
 
             <Route path={`${process.env.PUBLIC_URL}/movie/:id`} component={MovieDetails} exact/>
+
+            <Route path={`${process.env.PUBLIC_URL}/tv/:id`} component={TVDetails} exact/>
 
             <Route path={`${process.env.PUBLIC_URL}/person/:id`} component={Person}  exact/>
 

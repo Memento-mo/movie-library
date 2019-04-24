@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import RenderPropsMenu from './Menu';
-// import StickyBox from 'react-sticky-box';
 
 const Wrapped = styled.div`
   display: flex;
@@ -29,15 +29,24 @@ const Home = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ movies, tv }) => {
   return (
     <Wrapped>
       <Home>
         <NavLink to='/'>Главная</NavLink>
       </Home>
-      <RenderPropsMenu />
+      <RenderPropsMenu genres={movies} type={'movie'} title={'Фильмы'}/>
+      <RenderPropsMenu genres={tv} type={'tv'} title={'Сериалы'}/>
     </Wrapped>
   )
 }
 
-export default Header
+const mapStateToProps = ({ geral: { movie, tv } }) => {
+  return {
+    movies: movie.genres,
+    tv: tv.genres
+  }
+}
+
+
+export default connect(mapStateToProps)(Header);

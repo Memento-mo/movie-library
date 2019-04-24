@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { getMovies, clearMovies } from '../actions/index';
+import { getMovies, clearMovies } from '../actions/movies';
 import queryString from 'query-string';
 import { animateScroll as scroll } from 'react-scroll';
 

@@ -89,14 +89,19 @@ const Wrapped = styled.div`
   }
 `;
 
-const Movies = ({ movies }) => {
+const Movies = ({ movies, type }) => {
   const result = movies.results
   return (
     <MoviesContainer>
 
       <Wrapped> 
         { 
-          result.map(movie => <MovieCart movies={movie} key={movie.id}/>) 
+          result.map(movie => 
+              <MovieCart 
+                movies={movie} 
+                key={movie.id}
+                type={type}/>
+            ) 
         } 
       </Wrapped>
 

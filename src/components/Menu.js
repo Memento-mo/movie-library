@@ -6,7 +6,6 @@ import toRenderProps from 'recompose/toRenderProps';
 import withState from 'recompose/withState';
 
 import styled from 'styled-components';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const WithState = toRenderProps(withState('anchorEl', 'updateAnchorEl', null));
@@ -22,8 +21,7 @@ const Color = styled.div`
   }
 `;
 
-function RenderPropsMenu({ genres = []}) {
-
+function RenderPropsMenu({ genres = [], type, title}) {
   return (
     <WithState>
       {({ anchorEl, updateAnchorEl }) => {
@@ -42,7 +40,7 @@ function RenderPropsMenu({ genres = []}) {
               }}
             >
               <Color>
-                Фильмы
+                { title }
               </Color>
             </Button>
             <Menu id="render-props-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
@@ -50,7 +48,7 @@ function RenderPropsMenu({ genres = []}) {
                 genres.map(item => {
                   return <NavLink 
                       key={item.id} 
-                      to={`/genre/${item.name}`}
+                      to={`/genre/${type}/${item.name}`}
                     >
                     <MenuItem 
                       onClick={handleClose}>{item.name}</MenuItem>
@@ -66,10 +64,5 @@ function RenderPropsMenu({ genres = []}) {
   );
 }
 
-const mapStateToProps = ({ geral }) => {
-  return {
-    genres: geral.genres
-  }
-}
 
-export default connect(mapStateToProps)(RenderPropsMenu);
+export default RenderPropsMenu;

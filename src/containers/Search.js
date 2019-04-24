@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import  { getMoviesSearch } from '../actions/index';
+import  { getMoviesSearch } from '../actions/movies';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 

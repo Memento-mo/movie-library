@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { getPerson } from '../actions/index';
+import { getPerson } from '../actions/movies';
 import queryString from 'query-string';
 
 import PersonItem from '../components/PersonItem';

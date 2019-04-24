@@ -13,7 +13,7 @@ export default (state = INITAL_STATE, action) => {
     case TYPES.GET_CONFIG:
       return { ...state, base: action.payload };
     case TYPES.GET_GENRES:
-      return { ...state, ...action.payload };
+      return { ...state, movie: action.movie, tv: action.tv };
     default:
       return state
   }
