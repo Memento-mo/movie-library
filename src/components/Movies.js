@@ -100,7 +100,7 @@ const Movies = ({ movies, type }) => {
               <MovieCart 
                 movies={movie} 
                 key={movie.id}
-                type={type}/>
+                type={type === 'search' ? movie.media_type : type}/>
             ) 
         } 
       </Wrapped>

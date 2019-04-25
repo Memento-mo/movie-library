@@ -12,6 +12,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
     case TYPES.FETCH_GET_TV_FINISHED:
       return { ...state, loading: false };
+    case TYPES.FETCH_TV_RECOMMENDATIONS:
+      return { ...state, ...action.payload };
     default:
       return { ...state };
   }

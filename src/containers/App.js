@@ -12,6 +12,7 @@ import history from '../history';
 
 import TopSection from './TopSection';
 import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 import Discover from './Discover';
 import Genre from './Genre';
@@ -67,11 +68,13 @@ const App = ({ init, isLoading }) => {
 
             <Route path={`${process.env.PUBLIC_URL}/tv/:id`} component={TVDetails} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/person/:id`} component={Person}  exact/>
+            <Route path={`${process.env.PUBLIC_URL}/person/:id`} component={Person} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/search/:query`} component={Search}  exact/>
+            <Route path={`${process.env.PUBLIC_URL}/search/:query`} component={Search} exact/>
 
-            <Redirect to={`${process.env.PUBLIC_URL}/discover/Popular`} />
+            <Route path={`${process.env.PUBLIC_URL}/404`} component={Error} excat/>
+
+            <Redirect to={`${process.env.PUBLIC_URL}/404`} />
           </Switch>
         </Wrapped>
 

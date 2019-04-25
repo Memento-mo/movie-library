@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import LoaderWrapper from './LoaderWrapper';
 import TVItem from '../components/TVItem';
 import Title from '../components/Title';
+import Movies from '../components/Movies';
 
 const Section = styled.section`
   width: 100%;
@@ -15,10 +16,13 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-const TVDetails = ({ match, getSeries, tvDetails, loading, geral }) => {
+const TVDetails = ({ match, getSeries, tv, loading, geral, location }) => {
+
+  const params = queryString.parse(location.search);
+
   useEffect(() => {
-    getSeries(match.params.id);
-  }, [match.params.id])
+    getTvDetails(match.params.id, params.page, getSeries);
+  }, [match.params.id, params.page])
 
   const { secure_base_url } = geral.base.images;
 
@@ -26,13 +30,28 @@ const TVDetails = ({ match, getSeries, tvDetails, loading, geral }) => {
       <LoaderWrapper />
     :
       <Fragment>
-        <TVItem tv={tvDetails} baseUrl={secure_base_url}/>
+        <TVItem tv={tv} baseUrl={secure_base_url}/>
+
+        <Section>
+          <Title title={`Рекомендации`} subtitle={`Сериалы`}/>
+
+          <Movies movies={tv} type="tv"/>
+        </Section>
       </Fragment>
+}
+
+const getTvDetails = (id, page, getSeries) => {
+  scroll.scrollToTop({
+    smooth: true,
+    delay: 500
+  })
+
+  getSeries(id, page)
 }
 
 const mapStateToProps = ({ tv, geral }) => {
   return {
-    tvDetails: tv,
+    tv,
     loading: tv.loading,
     geral
   }

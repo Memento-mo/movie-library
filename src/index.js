@@ -9,15 +9,18 @@ import theme from './utils/theme';
 import GlobalStyles from './utils/globals';
 
 import App from './containers/App';
+import ErrorBoundry from './containers/ErrorBoundry';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <Fragment>
-        <App/>
-        <GlobalStyles />
-      </Fragment>
-    </ThemeProvider>
+    <ErrorBoundry>
+      <ThemeProvider theme={theme}>
+        <Fragment>
+          <App/>
+          <GlobalStyles />
+        </Fragment>
+      </ThemeProvider>
+    </ErrorBoundry>
   </Provider>,
   document.querySelector('#root')
 )

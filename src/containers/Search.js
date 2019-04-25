@@ -24,7 +24,6 @@ const LoaderWrapper = styled.div`
 `;
 
 const Search = ({ location, match, search, getMoviesSearch, loading }) => {
-
   const params = queryString.parse(location.search)
 
   useEffect(() => {
@@ -37,9 +36,9 @@ const Search = ({ location, match, search, getMoviesSearch, loading }) => {
 
   return (
   <Section>
-    <Title title={match.params.query} subtitle={'Фильмы'} />
+    <Title title={match.params.query} />
 
-    <Movies movies={search} />
+    <Movies movies={search} type={'search'}/>
   </Section>
   )
 }

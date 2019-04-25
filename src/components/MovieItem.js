@@ -6,6 +6,7 @@ import Rating from './Rating';
 import SliderSlick from './SliderSlick';
 import ModalVideo from 'react-modal-video';
 import Button from './Button';
+import Info from './Info';
 
 import trailer from '../icons/trailer.svg';
 import site from '../icons/site.svg';
@@ -247,14 +248,14 @@ const MovieItem = ({ baseUrl, movie }) => {
             </Subdescr>
           </RatingInfo>
 
-          <Info subTitle={"Бюджет:"} subDescr={`${movie.budget}$`}/>
+          <Info title={"Бюджет:"} descr={`${movie.budget}$`}/>
 
-          <Info subTitle={"Жанры:"} subDescr={genres}/>
+          <Info title={"Жанры:"} descr={genres}/>
           
-          <Info subTitle={"Описание:"} subDescr={`${movie.overview}`}/>
+          <Info title={"Описание:"} descr={`${movie.overview}`}/>
 
           <SliderWrapper>
-            <Info subTitle={"Актеры:"}/>
+            <Info title={"Актеры:"}/>
             <SliderSlick cast={movie.cast} baseUrl={baseUrl}/>
           </SliderWrapper>
 
@@ -297,21 +298,6 @@ const renderVideo = (videos, isOpen, setOpen) => {
   )
 }
 
-const Info = ({ subTitle, subDescr }) => {
-  
-  return !subDescr ? 
-        <InfoMovie>
-          <SubTitle>{subTitle}</SubTitle>
-        </InfoMovie> 
-      :
-        <InfoMovie>
-          <SubTitle>{subTitle}</SubTitle>
-          <Subdescr>{subDescr}</Subdescr>
-        </InfoMovie>
-    
-}
-
-
 const countries = (items = [])=> {
   return items.map(item => item.name + ' ')
 }
@@ -319,7 +305,7 @@ const countries = (items = [])=> {
 const getGenres = (items = []) => {
   return items.map(item => 
     <Link 
-      to={`${process.env.PUBLIC_URL}/genre/${item.name}`}
+      to={`${process.env.PUBLIC_URL}/genre/movie/${item.name}`}
       key={item.id}>
         {item.name + ' '}
     </Link>

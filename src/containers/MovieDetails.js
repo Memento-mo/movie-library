@@ -34,7 +34,7 @@ const MovieDetails = ({ match, getMovie, movie, loading, geral, location }) => {
         <Section>
           <Title title={"Рекомендации"} subtitle={"Фильмы"} />
 
-          <Movies movies={movie} />
+          <Movies movies={movie} type="movie"/>
         </Section>
       </Fragment>
 }

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import Rating from './Rating';
-
+import Modal from './Modal';
+import Info from './Info';
 
 const Wrapped = styled.div`
   width: 1100px;
@@ -147,6 +148,18 @@ const RatingInfo = styled.div`
   margin-bottom: 8px;
 `;
 
+const RatingsWrapper = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
+const RatingNumber = styled.div`
+  font-size: 12px;
+  margin-left: 10px;
+  position: relative;
+  top: -1px;
+`;
+
 const SubTitle = styled.div`
   font-size: 22px;
   color: black;
@@ -167,21 +180,6 @@ const Subdescr = styled.div`
   }
 `;
 
-const RatingsWrapper = styled.div`
-  align-items: center;
-  display: flex;
-`;
-
-const RatingNumber = styled.div`
-  font-size: 12px;
-  margin-left: 10px;
-  position: relative;
-  top: -1px;
-`;
-
-const InfoTv = styled.div`
-  margin-top: 10px;
-`;
 
 const Link = styled(NavLink)`
   color: rgba(55,71,79,1);
@@ -202,6 +200,7 @@ const TVItem = ({ tv, baseUrl }) => {
       <Content>
         <Img>
           <Image src={`${baseUrl}w500${tv.poster_path}`} alt="poster"/>
+          <Modal infoEpisode={tv.last_episode_to_air} baseUrl={baseUrl}/>
         </Img>
 
         <Description>
@@ -228,7 +227,15 @@ const TVItem = ({ tv, baseUrl }) => {
             </Subdescr>
           </RatingInfo>
 
-          <Info subTitle={"Жанры:"} subDescr={genres}/>
+          <Info title={"Жанры:"} descr={genres}/>
+
+          <Info title={"Количество сезонов/эпизодов:"} descr={`${tv.number_of_seasons}/${tv.number_of_episodes}`}/>
+
+          <Info title={"Дата выхода первой серии:"} descr={tv.first_air_date}/>
+        
+          <Info title={"Дата выхода следующей серии:"} descr={tv.next_episode_to_air ? tv.next_episode_to_air.air_date : null}/>
+
+          <Info title={"Описание:"} descr={tv.overview}/>
           
         </Description>
 
@@ -238,24 +245,10 @@ const TVItem = ({ tv, baseUrl }) => {
   )
 }
 
-const Info = ({ subTitle, subDescr }) => {
-  
-  return !subDescr ? 
-        <InfoTv>
-          <SubTitle>{subTitle}</SubTitle>
-        </InfoTv> 
-      :
-        <InfoTv>
-          <SubTitle>{subTitle}</SubTitle>
-          <Subdescr>{subDescr}</Subdescr>
-        </InfoTv>
-    
-}
-
 const getGenres = items => {
   return items.map(item => 
     <Link 
-      to={`${process.env.PUBLIC_URL}/genre/${item.name}`}
+      to={`${process.env.PUBLIC_URL}/genre/tv/${item.name}`}
       key={item.id}>
         {item.name + ' '}
     </Link>

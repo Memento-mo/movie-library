@@ -30,7 +30,7 @@ export const getSeries = (id, page) => async dispatch => {
       append_to_response: 'videos',
     }
   });
-  // await dispatch(getMoviesRecommendations(id, page))
+  await dispatch(getTvRecommendations(id, page))
 
   await dispatch({
     type: TYPES.FETCH_GET_TV,
@@ -40,5 +40,17 @@ export const getSeries = (id, page) => async dispatch => {
   // await dispatch(getCredits())
 
   dispatch({ type: TYPES.FETCH_GET_TV_FINISHED })
+}
+
+export const getTvRecommendations = (id, page) => async (dispatch) => {
+  const res = await moviedb.get(`/tv/${id}/recommendations`, {
+    params: {
+      page
+    }
+  })
+  dispatch({
+    type: TYPES.FETCH_TV_RECOMMENDATIONS,
+    payload: res.data
+  })
 }
 
