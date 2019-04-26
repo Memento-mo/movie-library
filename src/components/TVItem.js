@@ -191,7 +191,6 @@ const Link = styled(NavLink)`
 `; 
 
 const TVItem = ({ tv, baseUrl }) => {
-  console.log(tv)
   const genres = getGenres(tv.genres);
 
   return (

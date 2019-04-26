@@ -54,3 +54,9 @@ export const getTvRecommendations = (id, page) => async (dispatch) => {
   })
 }
 
+export const clearTv = () => {
+  return {
+    type: TYPES.FETCH_GET_TV_LOADING
+  }
+}
+

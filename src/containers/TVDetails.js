@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import styled from 'styled-components';
-import { getSeries } from '../actions/tv';
+import { getSeries, clearTv } from '../actions/tv';
 import queryString from 'query-string';
 import { animateScroll as scroll } from 'react-scroll';
 import { connect } from 'react-redux';
@@ -16,7 +16,7 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-const TVDetails = ({ match, getSeries, tv, loading, geral, location }) => {
+const TVDetails = ({ match, getSeries, clearTv, tv, loading, geral, location }) => {
 
   const params = queryString.parse(location.search);
 
@@ -46,7 +46,9 @@ const getTvDetails = (id, page, getSeries) => {
     delay: 500
   })
 
-  getSeries(id, page)
+  getSeries(id, page);
+
+  return () => clearTv()
 }
 
 const mapStateToProps = ({ tv, geral }) => {
@@ -57,4 +59,4 @@ const mapStateToProps = ({ tv, geral }) => {
   }
 }
 
-export default connect(mapStateToProps, { getSeries })(TVDetails);
+export default connect(mapStateToProps, { getSeries, clearTv })(TVDetails);
