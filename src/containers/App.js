@@ -31,8 +31,6 @@ const Wrapped = styled.div`
     width: 95%;
   }
 
-  @media ${props => props.theme.mediaQueries.large} {
-  }
 `;
 
 const LoaderWrapper = styled.div`
@@ -72,7 +70,7 @@ const App = ({ init, isLoading }) => {
 
             <Route path={`${process.env.PUBLIC_URL}/search/:query`} component={Search} exact/>
 
-            <Route path={`${process.env.PUBLIC_URL}/404`} component={Error} excat/>
+            <Route path={`${process.env.PUBLIC_URL}/404`} component={Error} exact/>
 
             <Redirect to={`${process.env.PUBLIC_URL}/404`} />
           </Switch>

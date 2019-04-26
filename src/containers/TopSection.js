@@ -39,7 +39,7 @@ const Container = styled.div`
     max-width: 370px;
   }
   @media ${props => props.theme.mediaQueries.minMobile} {
-    max-width: 300px;
+    max-width: 280px;
   }
 `;
 

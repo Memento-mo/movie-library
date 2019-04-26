@@ -57,6 +57,13 @@ form:hover .fa{
   color: white;
 }
 
+.fa-search:before {
+  content: "\f002";
+  position: relative;
+  top: 1px;
+  font-size: 20px;
+}
+
 @media only screen and (max-width: 645px) {
   form:hover{
     width: 170px;
@@ -84,8 +91,9 @@ form:hover .fa{
   .fa-search:before {
     content: "\f002";
     position: relative;
-    top: -4px;
-    right: 2px;
+    top: -1px;
+    right: 1px;
+    font-size: 14px;
   }
   
 }

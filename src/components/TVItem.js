@@ -106,7 +106,7 @@ const Description = styled.div`
   }
 
   @media ${props => props.theme.mediaQueries.smaller} {
-    margin-top: 50px;
+    margin-top: 75px;
   }
 
   @media ${props => props.theme.mediaQueries.verySmallest} {
@@ -117,7 +117,7 @@ const Description = styled.div`
   }
   @media ${props => props.theme.mediaQueries.middleMobile} {
     width: 400px;
-    margin-top: 0;
+    margin-top: 30px;
   }
   @media ${props => props.theme.mediaQueries.minMobile} {
     width: 300px;

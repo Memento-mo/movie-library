@@ -1,14 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import RenderPropsMenu from './Menu';
-
-const Wrapped = styled.div`
-  display: flex;
-  align-items: center;
-`;
+import MenuMobile from './MenuMobile';
 
 const Home = styled.div`
   font-weight: 600;
@@ -29,15 +25,37 @@ const Home = styled.div`
   }
 `;
 
+const Mobile = styled.div`
+  display: none;
+
+  @media ${props => props.theme.mediaQueries.smallest} {
+    display: block;
+  }
+`;
+
+const Pc = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media ${props => props.theme.mediaQueries.smallest} {
+    display: none;
+  }
+`;
+
 const Header = ({ movies, tv }) => {
   return (
-    <Wrapped>
-      <Home>
-        <NavLink to='/'>Главная</NavLink>
-      </Home>
-      <RenderPropsMenu genres={movies} type={'movie'} title={'Фильмы'}/>
-      <RenderPropsMenu genres={tv} type={'tv'} title={'Сериалы'}/>
-    </Wrapped>
+    <Fragment>
+      <Mobile>
+        <MenuMobile movies={movies} tv={tv}/>
+      </Mobile>
+      <Pc>
+        <Home>
+          <NavLink to='/'>Главная</NavLink>
+        </Home>
+        <RenderPropsMenu genres={movies} type={'movie'} title={'Фильмы'}/>
+        <RenderPropsMenu genres={tv} type={'tv'} title={'Сериалы'}/>
+      </Pc>
+    </Fragment>
   )
 }
 

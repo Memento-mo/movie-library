@@ -29,14 +29,14 @@ const MoviesContainer = styled.section`
   }
   @media ${props => props.theme.mediaQueries.smallest} {
     left: 18%;
-    width: 80%;  
+    width: 76%;  
   }
   @media ${props => props.theme.mediaQueries.verySmallest} {
     left: 15%;
   }
   @media ${props => props.theme.mediaQueries.mobile} {
-    left: 27%;
-    width: 43%;
+    left: 24%;
+    width: 57%;
   }
   @media ${props => props.theme.mediaQueries.minMobile} {
     left: 22%;
@@ -70,7 +70,7 @@ const Wrapped = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   }
   @media ${props => props.theme.mediaQueries.small} {
-    grid-column-gap: 50px;
+    grid-column-gap: 46px;
   }
   @media ${props => props.theme.mediaQueries.smaller} {
     grid-column-gap: 10px;

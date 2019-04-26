@@ -16,12 +16,13 @@ const Color = styled.div`
   font-size: 16px;
   font-family: 'Comfortaa', cursive;
 
-  @media ${props => props.theme.mediaQueries.minMobile} {
+  @media ${props => props.theme.mediaQueries.verySmallest} {
     font-size: 12px;
   }
+
 `;
 
-function RenderPropsMenu({ genres = [], type, title}) {
+function RenderPropsMenu({ genres = [], type, title, burger}) {
   return (
     <WithState>
       {({ anchorEl, updateAnchorEl }) => {
@@ -47,6 +48,7 @@ function RenderPropsMenu({ genres = [], type, title}) {
               {
                 genres.map(item => {
                   return <NavLink 
+                      onClick={burger}
                       key={item.id} 
                       to={`/genre/${type}/${item.name}`}
                     >

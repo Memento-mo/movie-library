@@ -8,7 +8,6 @@ import close from '../icons/close.svg';
 
 import Button from './Button';
 import Rating from './Rating';
-import Info from './Info';
 
 const Wrapped = styled.div`
   margin-top: 10px;
@@ -20,7 +19,8 @@ const Img = styled.img`
   width: 50px;
 `;
 
-const RatingInfo = styled.div``;
+const RatingInfo = styled.div`
+`;
 
 const RatingsWrapper = styled.div`
   align-items: center;
@@ -35,14 +35,17 @@ const RatingNumber = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-size: 22px;
+  font-size: 1.4rem;
   color: black;
 
   @media ${props => props.theme.mediaQueries.small} {
-    font-size: 18px;
+    font-size: 1.2rem;
+  }
+  @media ${props => props.theme.mediaQueries.smaller} {
+    font-size: 1rem;
   }
   @media ${props => props.theme.mediaQueries.minMobile} {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
 `;
 
@@ -50,19 +53,53 @@ const Subdescr = styled.div`
   margin-left: 10px;
 
   @media ${props => props.theme.mediaQueries.small} {
-    font-size: 12px;
+    font-size: 1rem;
+  }
+  @media ${props => props.theme.mediaQueries.smaller} {
+    font-size: 0.7rem;
   }
 `;
 
 const Title = styled.h1`
+
+  font-size: 2rem;
+
   @media ${props => props.theme.mediaQueries.small} {
-    font-size: 20px;
+    font-size: 1.5rem;
   }
+
+  @media ${props => props.theme.mediaQueries.smaller} {
+    font-size: 1.3rem;
+  }
+
   @media ${props => props.theme.mediaQueries.minMobile} {
-    font-size: 16px;
+    font-size: 1rem;
   }
 `;
 
+const InfoItem = styled.div`
+  margin-top: 10px;
+`;
+
+const Descr = styled.div`
+  margin-left: 10px;
+  color: rgba(55,71,79,1);
+
+  @media ${props => props.theme.mediaQueries.small} {
+    font-size: 1rem;
+  }
+  @media ${props => props.theme.mediaQueries.smaller} {
+    font-size: 0.7rem;
+  }
+`;
+
+const RatingDiv = styled.div`
+  display: block;
+
+  @media ${props => props.theme.mediaQueries.middleMobile} {
+    display: none;
+  }
+`;
 const Link = styled.a``;
 const Popup = styled.div``;
 const PopupInner = styled.div``;
@@ -94,7 +131,9 @@ const Modal = ({ infoEpisode, baseUrl }) => {
           <PopupText className="popup__text">
             <Title>{name}</Title>
             <Info title={`Номер эпизода/сезон/дата выхода:`} descr={`${episode_number}/${season_number}/${air_date}`}/>
-            { renderRating(vote_average)}
+            <RatingDiv>
+              { renderRating(vote_average)}
+            </RatingDiv>
             <Info title={`Описание:`} descr={overview}/>
            
           </PopupText>
@@ -105,6 +144,16 @@ const Modal = ({ infoEpisode, baseUrl }) => {
       </Popup>
     </Wrapped>
   )
+}
+
+const Info = ({ title, descr }) => {
+  return !descr ? 
+        null
+      :
+        <InfoItem>
+          <SubTitle>{title}</SubTitle>
+          <Descr>{descr}</Descr>
+        </InfoItem>
 }
 
 const renderImage = (baseUrl, src) => {

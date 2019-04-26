@@ -197,10 +197,6 @@ const SliderWrapper = styled.div`
   margin: 0 auto
 `;
 
-const InfoMovie = styled.div`
-  margin-top: 10px;
-`;
-
 const Buttons = styled.div`
   display: flex;
   margin-top: 5px;
