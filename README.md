@@ -1,4 +1,4 @@
-<img src="https://image.tmdb.org/t/p/w500/mb7wQv0adK3kjOUr9n93mANHhPJ.jpg"></img>
+<img src="https://i.ibb.co/xh4tBdq/screen.png"></img>
 ## Available Scripts
 
 In the project directory, you can run:
