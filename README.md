@@ -1,5 +1,8 @@
 <h1>"Библиотека фильмов"</h1>
+<h2>Главная страница</h2>
 <img src="https://i.ibb.co/xh4tBdq/screen.png"></img>
+<h2>Детали фильма</h2>
+<img src="https://i.ibb.co/3dtcCwn/screen2.png"></img>
 <h2>Available Scripts</h2>
 
 <h3>In the project directory, you can run:</h3>
