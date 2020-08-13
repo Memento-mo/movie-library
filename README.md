@@ -1,7 +1,8 @@
+<h1>"Библиотека фильмов"</h1>
 <img src="https://i.ibb.co/xh4tBdq/screen.png"></img>
-## Available Scripts
+<h2>Available Scripts</h2>
 
-In the project directory, you can run:
+<h3>In the project directory, you can run:</h3>
 
 ### `npm start`
 
