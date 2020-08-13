@@ -3,6 +3,8 @@
 <img src="https://i.ibb.co/xh4tBdq/screen.png"></img>
 <h2>Детали фильма</h2>
 <img src="https://i.ibb.co/3dtcCwn/screen2.png"></img>
+<h3>Адаптивная верстка</h3>
+<img src="https://i.ibb.co/WHvKzf9/adaptive.png"></img>
 <h2>Available Scripts</h2>
 
 <h3>In the project directory, you can run:</h3>
